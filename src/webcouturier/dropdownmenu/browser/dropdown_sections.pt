@@ -60,9 +60,6 @@
                   </tal:block>
               </li>
             </tal:tabs>
-            <li tal:condition="user/getId">
-              <a href="https://domain/page?useremail=${user/getUserName}">MY LINK</a>
-            </li>
         </ul>
       </div>
     </div>
