@@ -26,7 +26,7 @@
               <li tal:define="tid             tab/id;
                               href            tab/url;
                               title           tab/description|nothing;
-                              target          tab/link_target|nothing;
+                              target          python:view.getTabTarget(tab['id']);
                               subitems        python:view.getTabObject(tabUrl=tab['url'], tabPath=tab.get('path'));
                               class_clickable python:' noClick' if not view.enable_parent_clickable and subitems else '';
                               class_position  python:'menu-position-{0}'.format(repeat.tab.number);

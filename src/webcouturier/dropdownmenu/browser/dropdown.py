@@ -139,6 +139,17 @@ class DropdownMenuViewlet(common.GlobalSectionsViewlet):
             uid = None
         self.data = Assignment(root_uid=uid)
 
+    def getTabTarget(self, id):
+        obj = plone.api.content.get("/{0}".format(id))
+        
+        if obj and hasattr(obj, 'link_target'):
+            if plone.api.user.get_current().id == obj.Creator():
+                return ''
+
+            return obj.link_target
+        return ''
+
+
     def getTabObject(self, tabUrl='', tabPath=None):
         if tabUrl == self.portal_state.navigation_root_url():
             # We are at the navigation root
